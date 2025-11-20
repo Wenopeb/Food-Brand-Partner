@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Brand Partner - Boostez vos ventes sans investir un seul euro !</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+    <!-- Bannière d'alerte fixe -->
+    <div class="fixed top-0 left-0 right-0 z-50 bg-red-600 text-white text-center py-2 px-5">
+        <div class="flex items-center justify-center gap-3">
+            <span class="text-xl text-yellow-300 font-bold">⚠️</span>
+            <span class="font-bold text-sm md:text-base">PLACES LIMITÉES | Pour garantir un accompagnement de qualité, nous limitons le nombre de restaurants par zone.</span>
+            <button onclick="scrollToContact()" class="bg-white hover:bg-gray-100 text-red-600 px-4 py-2 rounded text-sm font-semibold transition-colors cursor-pointer border border-white">
+                Réserver ma place
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation sticky -->
+    <nav class="sticky top-[48px] z-40 bg-white border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img src="assets/logo.png" alt="Food Brand Partner" class="w-12 h-12 mr-3 rounded-lg">
+                        <span class="text-lg font-semibold text-gray-900">Food Brand Partner</span>
+                    </div>
+                </div>
+                
+                <!-- Navigation Desktop -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a onclick="scrollToBenefits()" class="text-gray-600 hover:text-violet-600 transition cursor-pointer">Bénéfices</a>
+                        <a href="#faq" class="text-gray-600 hover:text-violet-600 transition">FAQ</a>
+                        <button onclick="scrollToContact()" class="bg-violet-800 hover:bg-violet-900 text-white px-6 py-2 rounded-lg font-semibold transition-colors cursor-pointer">
+                            Prendre rendez-vous
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-gray-600 hover:text-violet-600 p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a onclick="scrollToBenefits()" class="text-gray-600 hover:text-violet-600 block px-3 py-2 transition cursor-pointer">Bénéfices</a>
+                <a href="#faq" class="text-gray-600 hover:text-violet-600 block px-3 py-2 transition">FAQ</a>
+                <button onclick="scrollToContact()" class="w-full text-left bg-violet-800 hover:bg-violet-900 text-white block px-3 py-2 rounded font-semibold transition-colors cursor-pointer">
+                    Prendre rendez-vous
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section class="pt-24 pb-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content Left -->
+                <div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        Boostez vos ventes sans investir un seul euro !
+                    </h1>
+
+                    <br>
+                    <p></p>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
+                        Food Brand Partner crée et gère des marques virtuelles exclusives pour votre restaurant, générant des ventes supplémentaires chaque jour sur Uber Eats et Deliveroo sans modifier votre cuisine ! Tout en vous faisant bénéficier de 10 à 30 % de réduction sur vos achats via notre centrale d'achat.
+                    </p>
+                    <button onclick="scrollToContact()" class="bg-violet-800 hover:bg-violet-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors cursor-pointer">
+                        En savoir plus
+                    </button>
+                </div>
+                
+                <!-- Visual Block - Très grossi -->
+                <div class="mb-8">
+                    <div class="bg-violet-800 rounded-2xl p-36 text-white text-center">
+                        <!-- Émoticône de croissance au-dessus du titre -->
+                        <div class="flex justify-center mb-6">
+                            <div class="text-6xl md:text-7xl animate-bounce">
+                                📈
+                            </div>
+                        </div>
+                        <h3 class="text-4xl md:text-5xl font-bold mb-6">Croissance garantie</h3>
+                    <p class="text-xl opacity-90">Augmentez vos ventes avec notre solution exclusive</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Problems -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Vous êtes noyé dans la masse, vos commandes stagnent, vos revenus plafonnent...
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Problem 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 mx-auto" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="8" width="18" height="10" fill="#8B5CF6" rx="2"/>
+                            <text x="12" y="6" text-anchor="middle" fill="#8B5CF6" font-size="8" font-weight="bold">24 H</text>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Invisible parmi des centaines</h3>
+                    <p class="text-gray-600 text-sm">Votre restaurant est perdu dans la masse sur les applications de livraison.</p>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 mx-auto" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="8" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="#8B5CF6" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Algorithmes imprévisibles</h3>
+                    <p class="text-gray-600 text-sm">Les changements d'algorithmes affectent directement votre visibilité et vos ventes.</p>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center card-hover">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 mx-auto" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="16" width="18" height="5" fill="#F3F4F6"/>
+                            <path d="M3 16L7 12L11 14L15 8L21 16" stroke="#EF4444" stroke-width="3" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Croissance limitée</h3>
+                    <p class="text-gray-600 text-sm">Vos revenus atteignent un plafond et vous ne savez plus comment progresser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Benefits -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Comment Food Brand Partner peut vous aider
+                </h2>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+                <!-- Benefits List -->
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Création et gestion de marques virtuelles optimisées</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Branding et visuels pris en charge par nos experts</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Marketing ciblé pour booster les ventes</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Intégration sur Uber Eats et Deliveroo</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Aucun coût, aucun risque</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Économies réelles : 10 à 30% de réduction sur vos achats</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="flex-shrink-0 w-6 h-6 text-violet-800">
+                            <svg fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Partenaires principaux : MÉTRO, FIRPLAST</h3>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Solution Block - Très grossi -->
+                <div class="bg-violet-800 rounded-2xl p-16 text-white text-center">
+                    <div class="mb-8">
+                        <svg class="w-20 h-20 mx-auto text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-4xl md:text-5xl font-bold mb-6">Solution complète</h3>
+                    <p class="text-xl opacity-90">Tout ce dont vous avez besoin pour réussir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Virtual Brands Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Les marques virtuelles : votre nouvelle machine à cash
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">
+                    Imaginez pouvoir ouvrir 2, 3 ou 5 nouveaux restaurants... sans payer de loyer, sans embaucher, sans acheter d'équipement.
+                </p>
+            </div>
+            
+            <!-- Definition Box -->
+            <div class="max-w-4xl mx-auto">
+                <div class="border-l-4 border-violet-400 bg-gray-50 p-6 rounded-r-lg">
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <span class="text-2xl mr-2">🍔</span>
+                        C'est quoi exactement une marque virtuelle ?
+                    </h3>
+                    <div class="space-y-3 text-gray-700">
+                        <p class="text-lg font-medium">
+                            Une marque virtuelle est un restaurant qui existe <strong>UNIQUEMENT sur Uber Eats et Deliveroo</strong>. 
+                            Pas de façade physique. Pas de salle. Pas de devanture. Juste une présence en ligne qui génère des commandes.
+                        </p>
+                        <p class="text-lg font-medium">
+                            C'est une marque de restaurant qui utilise <strong>VOTRE cuisine</strong> pour produire les plats, 
+                            sans que vous ayez besoin d'ouvrir un nouvel établissement.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+                    <span class="text-2xl mr-2">🎯</span>
+                    Comment ça marche concrètement ?
+                </h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section How It Works -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto px-4">
+                <!-- Step 1 -->
+                <div class="bg-violet-800 rounded-2xl p-4 text-white text-center flex-1 min-w-64 max-w-72">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="8" stroke-width="2"/>
+                                <path d="m21 21-4.35-4.35" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">1</h3>
+                    <h4 class="text-sm font-bold mb-3 uppercase">Nous analysons votre cuisine</h4>
+                    <p class="text-xs opacity-90">
+                        Nous évaluons vos capacités, vos spécialités et votre potentiel pour identifier les meilleures opportunités de marques virtuelles.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-violet-300 rounded-2xl p-4 text-gray-900 text-center flex-1 min-w-64 max-w-72">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">2</h3>
+                    <h4 class="text-sm font-bold mb-3 uppercase">Nous créons une marque sur mesure</h4>
+                    <p class="text-xs mb-4">
+                        Vous faites des burgers ? → Smash Burger Factory<br>
+                        Vous avez un four à pizza ? → Napoli Street Pizza<br>
+                        Vous préparez des pâtes ? → Pasta Lovers
+                    </p>
+                    <p class="text-xs font-medium">
+                        <span class="inline-flex items-center mr-2">
+                            <svg class="w-4 h-4 text-orange-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                            </svg>
+                        </span>
+                        Nous créons un concept qui attire une nouvelle clientèle
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-violet-800 rounded-2xl p-4 text-white text-center flex-1 min-w-64 max-w-72">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-800" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">3</h3>
+                    <h4 class="text-sm font-bold mb-3 uppercase">Nous gérons tout le branding</h4>
+                    <p class="text-xs opacity-90">
+                        Nom, logo, menu, photos, SEO, positionnement... Nous créons une identité complète qui attire les clients.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-violet-300 rounded-2xl p-4 text-gray-900 text-center flex-1 min-w-64 max-w-72">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">4</h3>
+                    <h4 class="text-sm font-bold mb-3 uppercase">Vous cuisinez ce que vous faites déjà</h4>
+                    <p class="text-xs opacity-90">
+                        Aucun changement dans votre organisation. Vous continuez à cuisiner vos spécialités habituelles.
+                    </p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="bg-violet-800 rounded-2xl p-4 text-white text-center flex-1 min-w-64 max-w-72">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-violet-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="7" height="7" stroke-width="2"/>
+                                <rect x="14" y="3" width="7" height="7" stroke-width="2"/>
+                                <rect x="14" y="14" width="7" height="7" stroke-width="2"/>
+                                <rect x="3" y="14" width="7" height="7" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">5</h3>
+                    <h4 class="text-sm font-bold mb-3 uppercase">Vous recevez les commandes</h4>
+                    <p class="text-xs opacity-90">
+                        Les commandes arrivent sur votre interface habituel, vous préparez et livrez comme d'habitude.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Success Reasons -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+                    <span class="text-orange-500 text-2xl mr-2">✨</span>
+                    Les 4 raisons du succès
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                <!-- Reason 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 text-white w-8 h-8 rounded flex items-center justify-center text-sm font-bold mr-4">1</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">Visibilité multipliée</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Vos marques virtuelles apparaissent dans les recherches de <strong>NOUVEAUX clients</strong> qui ne connaissent pas votre restaurant principal.
+                    </p>
+                </div>
+
+                <!-- Reason 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 text-white w-8 h-8 rounded flex items-center justify-center text-sm font-bold mr-4">2</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">Ciblage ultra-précis</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Chaque marque virtuelle cible un segment précis : burger, pizza, cuisine du monde... Attirant ainsi des clients spécifiques.
+                    </p>
+                </div>
+
+                <!-- Reason 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 text-white w-8 h-8 rounded flex items-center justify-center text-sm font-bold mr-4">3</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">OPTIMISATION ALGORITHMES</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Nous connaisons les secrets des algorithmes : mots-clés, photos qui convertissent, prix psychologiques.
+                    </p>
+                </div>
+
+                <!-- Reason 4 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 text-white w-8 h-8 rounded flex items-center justify-center text-sm font-bold mr-4">4</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">Aucune cannibalisation</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Les marques virtuelles attirent de <strong>NOUVEAUX clients</strong>, sans voler ceux de votre restaurant principal.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+                    <span class="text-orange-500 text-2xl mr-2">✨</span>
+                    Prêt à créer votre empire virtuel ?
+                </h3>
+                <p class="text-lg text-gray-600 mb-6">
+                    Prenez rendez-vous gratuitement pour découvrir quelles marques sont parfaites pour <strong>VOTRE cuisine</strong>.
+                </p>
+                <button onclick="scrollToContact()" class="bg-violet-800 hover:bg-violet-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors cursor-pointer">
+                    Découvrir mes marques virtuelles potentielles
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Benefits Cards -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Vos bénéfices clés
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
+                <!-- Benefit 1 -->
+                <div class="bg-violet-800 rounded-lg p-6 text-center text-white card-hover">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 mx-auto flex items-center justify-center text-4xl">💰</div>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold">Multipliez vos revenus</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="bg-violet-800 rounded-lg p-6 text-center text-white card-hover">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 mx-auto flex items-center justify-center">
+                            <div class="text-4xl font-bold text-red-400">100%</div>
+                        </div>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold">Zéro euro à avancer</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="bg-violet-800 rounded-lg p-6 text-center text-white card-hover">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 mx-auto flex items-center justify-center text-4xl">🚀</div>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold">Décuplez votre présence</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="bg-violet-800 rounded-lg p-6 text-center text-white card-hover">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 mx-auto flex items-center justify-center text-4xl">🍔</div>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold">Commandes supplémentaires</p>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="bg-violet-800 rounded-lg p-6 text-center text-white card-hover">
+                    <div class="mb-4">
+                        <div class="w-16 h-16 mx-auto flex items-center justify-center text-4xl">💯</div>
+                    </div>
+                    <p class="text-sm md:text-base font-semibold">Économisez sur vos achats</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Win-Win Model -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                    Notre modèle gagnant-gagnant
+                </h2>
+                <p class="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">
+                    Transparence totale, sécurité maximale
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-blue-50 rounded-lg p-6 card-hover">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">💰</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">Vous ne payez rien</h3>
+                    </div>
+                    <div class="space-y-3 text-sm text-gray-700">
+                        <p>• Aucun abonnement mensuel</p>
+                        <p>• Aucun frais d'installation</p>
+                        <p>• Aucun coût caché</p>
+                        <p>• Aucun investissement à faire</p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <button class="bg-violet-800 hover:bg-violet-900 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            <span class="mr-2">💡</span>
+                            Vous démarrez à zéro euro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-yellow-50 rounded-lg p-6 card-hover">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">💵</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">COMMENT NOUS GAGNONS DE L'ARGENT</h3>
+                    </div>
+                    <div class="space-y-3 text-sm text-gray-700">
+                        <p>• Commission UNIQUEMENT sur ventes supplémentaires</p>
+                        <p>• Vous gagnez 100€ → Nous touchons 15€</p>
+                        <p>• Vous ne vendez rien → Nous ne prenons rien</p>
+                        <p>• Vos ventes habituelles 100% à vous</p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <button class="bg-violet-800 hover:bg-violet-900 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            <span class="mr-2">💡</span>
+                            Si vous ne gagnez pas, nous ne gagnons pas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-orange-50 rounded-lg p-6 card-hover">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">🎁</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">Bonus centrale d'achat</h3>
+                    </div>
+                    <div class="space-y-3 text-sm text-gray-700">
+                        <p>• 10 à 30% de réduction sur TOUS vos achats</p>
+                        <p>• Viandes, fromages, légumes, équipements</p>
+                        <p>• Réduction immédiate et indépendante</p>
+                        <p>• Valable sur tous vos achats</p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <button class="bg-violet-800 hover:bg-violet-900 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            <span class="mr-2">💡</span>
+                            Économies immédiates dès le 1er achat
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-green-50 rounded-lg p-6 card-hover">
+                    <div class="text-center mb-4">
+                        <div class="text-4xl mb-2">🏆</div>
+                        <h3 class="text-lg font-bold text-gray-900 uppercase">Résultat : vous êtes toujours gagnant</h3>
+                    </div>
+                    <div class="space-y-3 text-sm text-gray-700">
+                        <p class="flex items-center"><span class="text-green-500 mr-2">✅</span> Votre chiffre d'affaires augmente</p>
+                        <p class="flex items-center"><span class="text-green-500 mr-2">✅</span> Vos charges baissent</p>
+                        <p class="flex items-center"><span class="text-green-500 mr-2">✅</span> Votre rentabilité explose</p>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <button class="bg-violet-800 hover:bg-violet-900 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            <span class="mr-2">💡</span>
+                            Une solution qui fait grandir votre restaurant
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Zero Risk Guarantee -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Main Content Box with Red Border -->
+                <div class="border-4 border-red-600 rounded-xl p-8 bg-white">
+                    <!-- Title -->
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+                            <span class="text-red-500 text-2xl mr-3">💯</span>
+                            100 GARANTIE ZÉRO RISQUE
+                        </h2>
+                    </div>
+                    
+                    <!-- Two Columns -->
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <!-- Left Column - What's NOT Required -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">Ce qui n'est pas requis :</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-white text-sm font-bold">-</span>
+                                    </div>
+                                    <span class="text-gray-700">Aucun investissement financier</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-white text-sm font-bold">-</span>
+                                    </div>
+                                    <span class="text-gray-700">Aucun engagement de durée</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-white text-sm font-bold">-</span>
+                                    </div>
+                                    <span class="text-gray-700">Aucun frais caché</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center mr-3">
+                                        <span class="text-white text-sm font-bold">-</span>
+                                    </div>
+                                    <span class="text-gray-700">Aucune installation technique complexe</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column - What's Guaranteed -->
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900 mb-4">Ce qui est garanti :</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-gray-700">Vous pouvez arrêter quand vous voulez (préavis 30 jours)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-gray-700">Vous ne payez QUE si vous vendez</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-gray-700">Vous gardez 100% du contrôle</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                                        <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-gray-700">Vos recettes restent vos recettes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Button -->
+                    <div class="text-center">
+                        <button onclick="scrollToContact()" class="bg-violet-800 hover:bg-violet-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors cursor-pointer">
+                            <span class="mr-2">💡</span>
+                            Discutons sans pression de votre situation
+                            <br>
+                            <span class="text-sm font-normal">Rendez-vous gratuit de 30 minutes</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gradient-to-br from-violet-800 to-violet-900 rounded-2xl p-6 md:p-12 text-white">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">Prenez rendez-vous gratuitement</h2>
+                    <p class="text-base md:text-lg text-violet-100 mb-6 md:mb-8">
+                        Discutez avec nos experts pour découvrir comment multiplier vos revenus.
+                    </p>
+
+                    <form class="space-y-4 md:space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Votre nom"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Votre email"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Votre téléphone"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                            <input
+                                type="text"
+                                name="restaurant"
+                                placeholder="Nom de votre restaurant"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            class="w-full bg-white text-violet-800 hover:bg-violet-50 font-bold py-3 md:py-4 text-base md:text-lg h-12 md:h-14 rounded-lg"
+                        >
+                            Je prends rendez-vous
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="container">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6">Questions fréquemment posées</h2>
+                    <p class="text-lg md:text-xl text-gray-600">
+                        Trouvez les réponses à vos questions sur Food Brand Partner.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(0)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Y a-t-il des frais cachés ?
+                            </h3>
+                            <svg id="faq-icon-0" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-0" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Non, 100% gratuit et sans engagement. Nous gagnons une commission uniquement sur les ventes générées par nos marques virtuelles.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(1)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Ça va compliquer ma cuisine ?
+                            </h3>
+                            <svg id="faq-icon-1" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-1" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Non, nos marques virtuelles utilisent exactement les mêmes plats que vous cuisinez déjà. Aucun changement dans votre organisation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(2)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Combien de marques virtuelles je peux créer ?
+                            </h3>
+                            <svg id="faq-icon-2" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-2" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Cela dépend de la capacité de votre cuisine. Généralement entre 2 à 5 marques virtuelles par restaurant principal.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(3)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Que se passe-t-il si je veux arrêter ?
+                            </h3>
+                            <svg id="faq-icon-3" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-3" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Vous pouvez arrêter à tout moment avec un préavis de 30 jours. Aucune pénalité, aucun frais de résiliation.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(4)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Est-ce légal sur Uber Eats et Deliveroo ?
+                            </h3>
+                            <svg id="faq-icon-4" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-4" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Oui, absolument. Les marques virtuelles sont parfaitement légales etacceptées par les plateformes de livraison.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(5)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Les clients vont se rendre compte que c'est le même restaurant ?
+                            </h3>
+                            <svg id="faq-icon-5" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-5" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Non, chaque marque virtuelle a sa propre identité visuelle, son nom et son branding. Elles semblent être des restaurants différents.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(6)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Qui gère les avis clients des marques virtuelles ?
+                            </h3>
+                            <svg id="faq-icon-6" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-6" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Nous gérons entièrement la relation client et la modération des avis pour toutes vos marques virtuelles.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <button
+                            onclick="toggleFaq(7)"
+                            class="w-full p-4 md:p-6 flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        >
+                            <h3 class="text-base md:text-lg font-bold text-gray-900 text-left pr-4">
+                                Est-ce que je peux choisir le type de marque créée ?
+                            </h3>
+                            <svg id="faq-icon-7" class="text-violet-800 transition-transform w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="faq-answer-7" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
+                            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                                Absolument ! Nous analysons votre cuisine et vous proposons les concepts les plus rentables pour votre secteur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4">Créons ensemble des marques virtuelles qui transforment votre restaurant.</h3>
+                    <p class="text-gray-300 text-lg mb-8">Rejoignez les restaurateurs qui ont déjà multiplié leurs revenus avec Food Brand Partner.</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
+                    <a onclick="scrollToBenefits()" class="hover:text-white transition text-sm md:text-base cursor-pointer">Bénéfices</a>
+                    <a href="#faq" class="hover:text-white transition text-sm md:text-base">FAQ</a>
+                    <a onclick="scrollToContact()" class="hover:text-white transition text-sm md:text-base cursor-pointer">Contact</a>
+                    <a href="#" class="hover:text-white transition text-sm md:text-base">Mentions légales</a>
+                </div>
+                
+                <div class="border-t border-gray-700 pt-8">
+                    <p class="text-gray-400 text-sm">&copy; 2025 Food Brand Partner. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="scripts/app.js"></script>
+</body>
+</html>
