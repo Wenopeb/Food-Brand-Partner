@@ -1,133 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Brand Partner - Boostez vos ventes sans investir un seul euro !</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-            <!-- Brevo Tracker -->
-                <script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
-<script>
-    // Version: 2.0
-    window.Brevo = window.Brevo || [];
-    Brevo.push([
-        "init",
-        {
-        client_key: "ndch1ebe1iczadxqo99ie0wn",
-        // Optional: Add other initialization options, see documentation
-        }
-    ]);
-</script>
-            <!-- Brevo Conversations {literal} -->
-    <script>
-        (function(d, w, c) {
-            w.BrevoConversationsID = '66126f5dbfa8493d584f4090';
-            w[c] = w[c] || function() {
-                (w[c].q = w[c].q || []).push(arguments);
-            };
-            var s = d.createElement('script');
-            s.async = true;
-            s.src = 'https://conversations-widget.brevo.com/brevo-conversations.js';
-            if (d.head) d.head.appendChild(s);
-        })(document, window, 'BrevoConversations');
+    
+    <!-- Cookiebot - Gestionnaire de consentement conforme RGPD -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" data-culture="FR" async></script>
+    
+    <!-- Scripts Brevo contrôlés par Cookiebot -->
+    <!-- Ces scripts sont bloqués jusqu'à acceptation des cookies marketing -->
+    <script type="text/plain" data-cookiecategory="marketing" src="https://cdn.brevo.com/js/sdk-loader.js"></script>
+    <script type="text/plain" data-cookiecategory="marketing">
+        window.BrevoConversationsID = '66126f5dbfa8493d584f4090';
+        window.BrevoConversations = function() {
+            (window.BrevoConversations.q = window.BrevoConversations.q || []).push(arguments);
+        };
     </script>
-    <!-- /Brevo Conversations {/literal} -->
+    <script type="text/plain" data-cookiecategory="marketing" src="https://conversations-widget.brevo.com/conversations.js"></script>
+    
+    <!-- Callback Cookiebot pour ouvrir le chat après consentement -->
+    <script>
+        window.addEventListener('CookiebotOnAccept', function(categories) {
+            if (categories.includes('marketing')) {
+                // Patienter que les scripts se chargent puis ouvrir le chat
+                setTimeout(function() {
+                    if (typeof window.BrevoConversations === 'function') {
+                        try {
+                            window.BrevoConversations('openChat', true);
+                            console.log('Chat Brevo ouvert après consentement');
+                        } catch(e) {
+                            console.log('Impossible d\'ouvrir le chat:', e);
+                        }
+                    }
+                }, 2000);
+            }
+        });
     </script>
     
-    <!-- Fonctions JavaScript pour les boutons cliquables -->
-    <script>
-        function scrollToDetails() {
-            // Scrolle vers la section de détails/problèmes
-            const problemsSection = document.querySelector('section h2');
-            if (problemsSection) {
-                problemsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                // Fallback: chercher des éléments liés aux détails
-                const detailElements = document.querySelectorAll('h2, h3');
-                let targetElement = null;
-                
-                for (let element of detailElements) {
-                    const text = element.textContent.toLowerCase();
-                    if (text.includes('problème') || text.includes('noyé') || text.includes('stagnent') || text.includes('plafonnent')) {
-                        targetElement = element;
-                        break;
-                    }
-                }
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        }
-        
-        function scrollToContact() {
-            // Scrolle vers le formulaire de contact
-            const form = document.querySelector('form');
-            if (form) {
-                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Focus sur le premier champ du formulaire après le scroll
-                setTimeout(() => {
-                    const firstInput = form.querySelector('input, textarea');
-                    if (firstInput) {
-                        firstInput.focus();
-                    }
-                }, 500);
-            } else {
-                // Fallback: chercher des sections de contact
-                const contactElements = document.querySelectorAll('h2, h3');
-                let targetElement = null;
-                
-                for (let element of contactElements) {
-                    const text = element.textContent.toLowerCase();
-                    if (text.includes('contact') || text.includes('rendez-vous') || text.includes('discutons') || text.includes('pren')) {
-                        targetElement = element;
-                        break;
-                    }
-                }
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        }
-        
-        function scrollToBenefits() {
-            // Scrolle vers la section "Vos bénéfices clés"
-            const benefitsElements = document.querySelectorAll('h1, h2, h3');
-            let benefitsSection = null;
-            
-            for (let element of benefitsElements) {
-                if (element && element.textContent && element.textContent.includes('Vos bénéfices clés')) {
-                    benefitsSection = element.closest('section') || element;
-                    break;
-                }
-            }
-            
-            if (benefitsSection) {
-                benefitsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                // Fallback: chercher par contenu textuel dans tous les éléments
-                const allElements = document.querySelectorAll('*');
-                for (let element of allElements) {
-                    if (element.textContent && element.textContent.includes('Vos bénéfices clés')) {
-                        benefitsSection = element.closest('section') || element;
-                        benefitsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        break;
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
+    <link rel="stylesheet" href="styles/app.css">
     <style>
-        body { font-family: 'Inter', system-ui, sans-serif; }
-        .section-title { @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6; }
-        .section-subtitle { @apply text-lg md:text-xl text-gray-600 mb-8; }
-        .card-hover { @apply hover:shadow-xl hover:scale-105 transition-all duration-300; }
+        body { 
+            background-color: #ffffff;
+            min-height: 100vh;
+        }
     </style>
 </head>
 <body>
-    <!-- Bannière d'alerte fixe (IMAGE 1) -->
+    <!-- Bannière d'alerte fixe -->
     <div class="fixed top-0 left-0 right-0 z-50 bg-red-600 text-white text-center py-2 px-2 sm:px-5">
         <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3">
             <span class="text-lg sm:text-xl text-yellow-300 font-bold">⚠️</span>
@@ -144,8 +67,8 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <div class="flex items-center gap+10">
-<img src="logo.png" alt="Food Brand Partner" style="width:120px; height:120px;" class="mr-3 rounded-lg mt-0 md:mt-3">
+                    <div class="flex items-center gap-0.5">
+                        <img src="assets/logo.png" alt="Food Brand Partner" style="width:48px; height:48px;" class="w-[48px] h-[48px] md:w-[40px] md:h-[40px] rounded-lg mt-0.5">
                         <span class="text-lg font-semibold text-gray-900">Food Brand Partner</span>
                     </div>
                 </div>
@@ -174,7 +97,7 @@
 
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <div class="px-2 pt-2 pb-3 space-y-1">
+            <div class="px-2 pt-1 pb-3 space-y-1">
                 <a onclick="scrollToBenefits()" class="text-gray-600 hover:text-violet-600 block px-3 py-2 transition cursor-pointer">Bénéfices</a>
                 <a href="#faq" class="text-gray-600 hover:text-violet-600 block px-3 py-2 transition">FAQ</a>
                 <button onclick="scrollToContact()" class="w-full text-left bg-violet-800 hover:bg-violet-900 text-white block px-3 py-2 rounded font-semibold transition-colors cursor-pointer">
@@ -184,7 +107,7 @@
         </div>
     </nav>
 
-    <!-- Section Hero (IMAGE 2) -->
+    <!-- Section Hero -->
     <section class="pt-[160px] sm:pt-[150px] md:pt-[140px] pb-8 sm:pb-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -220,7 +143,7 @@
         </div>
     </section>
 
-    <!-- Section Problems (IMAGE 3) -->
+    <!-- Section Problems -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -269,7 +192,7 @@
         </div>
     </section>
 
-    <!-- Section Benefits (IMAGE 4) -->
+    <!-- Section Benefits -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -373,7 +296,7 @@
         </div>
     </section>
 
-    <!-- Section Virtual Brands Introduction (IMAGE 5) -->
+    <!-- Section Virtual Brands Introduction -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -414,7 +337,7 @@
         </div>
     </section>
 
-    <!-- Section How It Works (IMAGE 6) -->
+    <!-- Section How It Works -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto px-4">
@@ -515,7 +438,7 @@
         </div>
     </section>
 
-    <!-- Section Success Reasons (IMAGE 7) -->
+    <!-- Section Success Reasons -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -587,7 +510,7 @@
         </div>
     </section>
 
-    <!-- Section Benefits Cards (IMAGE 8) -->
+    <!-- Section Benefits Cards -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -642,7 +565,7 @@
         </div>
     </section>
 
-    <!-- Section Win-Win Model (IMAGE 9) -->
+    <!-- Section Win-Win Model -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -737,7 +660,7 @@
         </div>
     </section>
 
-    <!-- Section Zero Risk Guarantee (IMAGE 10) -->
+    <!-- Section Zero Risk Guarantee -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto">
@@ -838,8 +761,8 @@
         </div>
     </section>
 
-    <!-- Contact Form Section (IMAGE 11) -->
-    <section class="py-16 bg-gray-50">
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-16 bg-gray-50 scroll-mt-20">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-2xl mx-auto">
                 <div class="bg-gradient-to-br from-violet-800 to-violet-900 rounded-2xl p-6 md:p-12 text-white">
@@ -848,26 +771,61 @@
                         Discutez avec nos experts pour découvrir comment multiplier vos revenus.
                     </p>
 
-                   <form action="https://formsubmit.co/contact@foodbrandpartner.com" method="POST" class="space-y-4 md:space-y-6">
-  <input type="hidden" name="_captcha" value="false">
-  <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
-    <input type="text" name="Prénom" placeholder="Votre nom" required class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3">
-    <input type="email" name="email" placeholder="Votre email" required class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3">
-  </div>
-  <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
-    <input type="tel" name="Numéro de téléphone" placeholder="Votre téléphone" required class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3">
-    <input type="text" name="restaurant" placeholder="Nom de votre restaurant" required class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3">
-  </div>
-  <textarea name="message" placeholder="Votre message" required class="bg-white text-gray-900 border-0 placeholder-gray-500 h-32 text-base rounded-lg px-4 py-3"></textarea>
-  <button type="submit" class="w-full bg-white text-violet-800 hover:bg-violet-50 font-bold py-3 md:py-4 text-base md:text-lg h-12 md:h-14 rounded-lg">Je prends rendez-vous</button>
-</form>
-
+                    <form class="space-y-4 md:space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Votre nom"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Votre email"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                        </div>
+                        <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+                            <input
+                                type="tel"
+                                name="phone"
+                                placeholder="Votre téléphone"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                            <input
+                                type="text"
+                                name="restaurant"
+                                placeholder="Nom de votre restaurant"
+                                required
+                                class="bg-white text-gray-900 border-0 placeholder-gray-500 h-12 text-base rounded-lg px-4 py-3"
+                            />
+                        </div>
+                        <div class="mt-4">
+                            <input id="consent-request" type="checkbox" name="consent-request" class="h-4 w-4 rounded border-gray-300 text-violet-800 focus:ring-violet-600">
+                            <label for="consent-request" class="ml-2 text-sm text-white">J'accepte que mes données soient utilisées pour répondre à ma demande</label>
+                            <p id="consent-error" class="text-red-500 text-sm mt-1 hidden">Veuillez cocher cette case pour envoyer votre message.</p>
+                        </div>
+                        <div class="mt-4">
+                            <input id="consent-newsletter" type="checkbox" name="consent-newsletter" class="h-4 w-4 rounded border-gray-300 text-violet-800 focus:ring-violet-600">
+                            <label for="consent-newsletter" class="ml-2 text-sm text-white">J'accepte de recevoir la newsletter et les offres commerciales de Food Brand Partner. Je pourrai me désinscrire à tout moment.</label>
+                        </div>
+                        <button
+                            type="submit"
+                            class="w-full bg-white text-violet-800 hover:bg-violet-50 font-bold py-3 md:py-4 text-base md:text-lg h-12 md:h-14 rounded-lg"
+                        >
+                            Je prends rendez-vous
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section (IMAGE 12) -->
+    <!-- FAQ Section -->
     <section id="faq" class="py-16 bg-white">
         <div class="container">
             <div class="max-w-3xl mx-auto">
@@ -969,7 +927,7 @@
                         </button>
                         <div id="faq-answer-4" class="hidden px-4 md:px-6 pb-4 md:pb-6 border-t border-gray-200">
                             <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                                Oui, absolument. Les marques virtuelles sont parfaitement légales etacceptées par les plateformes de livraison.
+                                Oui, absolument. Les marques virtuelles sont parfaitement légales et acceptées par les plateformes de livraison.
                             </p>
                         </div>
                     </div>
@@ -1036,77 +994,256 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-16">
+    <footer class="bg-gray-800 text-white py-8 no-print">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold mb-4">Créons ensemble des marques virtuelles qui transforment votre restaurant.</h3>
-                    <p class="text-gray-300 text-lg mb-8">Rejoignez les restaurateurs qui ont déjà multiplié leurs revenus avec Food Brand Partner.</p>
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold mb-2">Créons ensemble des marques virtuelles qui transforment votre restaurant.</h3>
+                    <p class="text-gray-300">Rejoignez les restaurateurs qui ont déjà multiplié leurs revenus avec Food Brand Partner.</p>
                 </div>
                 
-                <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mb-8">
-                    <a onclick="scrollToBenefits()" class="hover:text-white transition text-sm md:text-base cursor-pointer">Bénéfices</a>
-                    <a href="#faq" class="hover:text-white transition text-sm md:text-base">FAQ</a>
-                    <a onclick="scrollToContact()" class="hover:text-white transition text-sm md:text-base cursor-pointer">Contact</a>
-                    <a href="#" class="hover:text-white transition text-sm md:text-base">Mentions légales</a>
+                <div class="flex flex-wrap justify-center items-center gap-4 md:space-x-6 mb-6">
+                    <a href="index.html" class="text-gray-300 hover:text-white text-sm transition-colors">Accueil</a>
+                    <a href="cgv.html" class="text-gray-300 hover:text-white text-sm transition-colors">CGV</a>
+                    <a href="mentions-legales.html" class="text-gray-300 hover:text-white text-sm transition-colors">Mentions légales</a>
+                    <a href="politique-confidentialite.html" class="text-gray-300 hover:text-white text-sm transition-colors">Politique de confidentialité</a>
+                    <a href="cookies.html" class="text-gray-300 hover:text-white text-sm transition-colors">Politique des cookies</a>
                 </div>
                 
-                <div class="border-t border-gray-700 pt-8">
-                    <p class="text-gray-400 text-sm">&copy; 2025 Food Brand Partner. Tous droits réservés.</p>
+                <div class="border-t border-gray-700 pt-6">
+                    <p class="text-gray-400 text-sm">© 2025 Food Brand Partner. Tous droits réservés.</p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Custom Placeholder Button for Chat (visible when cookies not accepted) -->
+    <div id="chat-placeholder-btn" class="fixed bottom-6 right-6 w-14 h-14 bg-[#0084ff] rounded-full cursor-pointer z-40 flex items-center justify-center shadow-lg hover:bg-[#0073e6] transition-colors" title="Discuter avec nous" style="display: none;">
+        <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/app.js"></script>
+    
+    <!-- Gestion du bouton tchat avec consentement cookies -->
     <script>
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        }
-
-        function toggleFaq(index) {
-            const answer = document.getElementById(`faq-answer-${index}`);
-            const icon = document.getElementById(`faq-icon-${index}`);
+        document.addEventListener('DOMContentLoaded', function() {
+            const placeholderBtn = document.getElementById('chat-placeholder-btn');
+            let chatRequested = false;
             
-            if (answer.classList.contains('hidden')) {
-                answer.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                answer.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
-        }
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            // Fonction pour vérifier l'état du consentement et afficher/masquer le bouton
+            function updateChatButtonVisibility() {
+                if (typeof Cookiebot !== 'undefined' && Cookiebot.consent.marketing) {
+                    // Consentement marketing donné : masquer le bouton personnalisé
+                    if (placeholderBtn) {
+                        placeholderBtn.style.display = 'none';
+                    }
+                    return true;
+                } else {
+                    // Pas de consentement : afficher le bouton personnalisé
+                    if (placeholderBtn) {
+                        placeholderBtn.style.display = 'flex';
+                    }
+                    return false;
                 }
+            }
+            
+            // Vérifier l'état initial du consentement
+            updateChatButtonVisibility();
+            
+            // Gestion du clic sur le bouton personnalisé
+            if (placeholderBtn) {
+                placeholderBtn.addEventListener('click', function() {
+                    chatRequested = true;
+                    // Afficher la popup de consentement Cookiebot
+                    if (typeof Cookiebot !== 'undefined') {
+                        Cookiebot.show();
+                    }
+                });
+            }
+            
+            // Callback quand l'utilisateur accepte les cookies
+            window.addEventListener('CookiebotOnAccept', function(categories) {
+                if (categories.includes('marketing')) {
+                    // Masquer le bouton personnalisé
+                    updateChatButtonVisibility();
+                    
+                    // Si l'utilisateur avait demandé à ouvrir le tchat, l'ouvrir après consentement
+                    if (chatRequested) {
+                        setTimeout(function() {
+                            openChatWidget();
+                        }, 1500);
+                    }
+                }
+            });
+            
+            // Fonction pour ouvrir le widget Brevo
+            function openChatWidget() {
+                if (typeof window.BrevoConversations === 'function') {
+                    try {
+                        window.BrevoConversations('openChat', true);
+                        console.log('Chat Brevo ouvert après consentement');
+                    } catch(e) {
+                        console.log('Impossible d\'ouvrir le chat:', e);
+                    }
+                } else {
+                    // Réessayer dans 500ms si Brevo n'est pas encore chargé
+                    setTimeout(function() {
+                        if (typeof window.BrevoConversations === 'function') {
+                            try {
+                                window.BrevoConversations('openChat', true);
+                                console.log('Chat Brevo ouvert après consentement');
+                            } catch(e) {
+                                console.log('Impossible d\'ouvrir le chat:', e);
+                            }
+                        }
+                    }, 500);
+                }
+            }
+            
+            // Réinitialiser le flag quand le consentement est retiré
+            window.addEventListener('CookiebotOnDecline', function() {
+                chatRequested = false;
+                updateChatButtonVisibility();
             });
         });
-
-        // Add animation on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.card-hover');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('animate-fade-in-up');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
     </script>
+    
+    <!-- Validation du consentement RGPD -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    const consentCheckbox = document.getElementById('consent-request');
+                    const errorElement = document.getElementById('consent-error');
+                    
+                    if (consentCheckbox && !consentCheckbox.checked) {
+                        event.preventDefault();
+                        if (errorElement) {
+                            errorElement.classList.remove('hidden');
+                        }
+                        consentCheckbox.focus();
+                    } else {
+                        if (errorElement) {
+                            errorElement.classList.add('hidden');
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+<style>
+#minimax-floating-ball {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 12px;
+  background: #222222;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  color: #F8F8F8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  z-index: 9999;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#minimax-floating-ball:hover {
+  transform: translateY(-2px);
+  background: #383838;
+}
+.minimax-ball-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.minimax-logo-wave {
+  
+  width: 20px;
+  height: 17px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='17' viewBox='0 0 20 17' fill='none'%3E%3Cpath d='M20 12.3718L16.283 16.2413H12.2518V13.1614H9.17175V16.2413H7.00999V13.1613H3.92998V16.2413H0V4.00101L3.84145 0H20V12.3718Z' fill='white'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.minimax-ball-text {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.minimax-close-icon {
+  margin-left: 8px;
+  font-size: 16px;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.minimax-close-icon:hover {
+  opacity: 1;
+}
+</style>
+<div id="minimax-floating-ball">
+  <div class="minimax-ball-content">
+    <div class="minimax-logo-wave"></div>
+    <span class="minimax-ball-text">Created by MiniMax Agent</span>
+  </div>
+  <div class="minimax-close-icon">×</div>
+</div>
+<script>
+// Initialize floating ball functionality
+function initFloatingBall() {
+  const ball = document.getElementById('minimax-floating-ball');
+  if (!ball) return;
+
+  // Initial animation
+  ball.style.opacity = '0';
+  ball.style.transform = 'translateY(20px)';
+
+  setTimeout(() => {
+    ball.style.opacity = '1';
+    ball.style.transform = 'translateY(0)';
+  }, 500);
+
+  // Handle logo click
+  const ballContent = ball.querySelector('.minimax-ball-content');
+  ballContent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    window.open('https://agent.minimax.io/', '_blank');
+    ball.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      ball.style.transform = 'scale(1)';
+    }, 100);
+  });
+
+  // Handle close button click
+  const closeIcon = ball.querySelector('.minimax-close-icon');
+  closeIcon.addEventListener('click', function (e) {
+    e.stopPropagation();
+    ball.style.opacity = '0';
+    ball.style.transform = 'translateY(20px)';
+
+    setTimeout(() => {
+      ball.style.display = 'none';
+    }, 300);
+  });
+}
+
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', initFloatingBall); 
+</script>
 </body>
 </html>
