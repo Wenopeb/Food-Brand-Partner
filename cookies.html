@@ -1,11 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique des Cookies - Food Brand Partner</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cookiebot -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" data-culture="FR" type="text/javascript"></script>
+    <script src="https://cdn.tailwindcss.com" data-cookieconsent="ignore"></script>
+    <style data-cookieconsent="ignore">body { opacity: 1 !important; visibility: visible !important; }</style>
+    <script data-cookieconsent="ignore">
+        (function() {
+            const BID = "66126f5dbfa8493d584f4090";
+            let loaded = false;
+            function loadBrevo() {
+                if (loaded) return;
+                (function(d, w, c) {
+                    w.BrevoConversationsID = BID;
+                    w[c] = w[c] || function() {(w[c].q = w[c].q || []).push(arguments);};
+                    var s = d.createElement("script");
+                    s.async = true; s.src = "https://conversations-widget.brevo.com/brevo-conversations.js";
+                    if (d.head) d.head.appendChild(s);
+                })(document, window, "BrevoConversations");
+                loaded = true;
+            }
+            function checkConsent() {
+                const btn = document.getElementById("chat-placeholder-btn");
+                if (typeof Cookiebot !== "undefined" && Cookiebot.consent) {
+                    if (Cookiebot.consent.marketing) {
+                        if (btn) btn.style.display = "none";
+                        loadBrevo();
+                        if (window.chatReq) {
+                            setTimeout(() => { if(window.BrevoConversations) window.BrevoConversations("openChat", true); }, 1500);
+                            window.chatReq = false;
+                        }
+                    } else {
+                        if (btn) btn.style.display = "flex";
+                    }
+                }
+            }
+            window.handleFakeChatClick = function() {
+                window.chatReq = true;
+                if (typeof Cookiebot !== "undefined") Cookiebot.show();
+            };
+            window.addEventListener("CookiebotOnAccept", checkConsent);
+            setInterval(checkConsent, 2000);
+        })();
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -41,7 +81,7 @@
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center gap-10">
-                        <img src="logo.png" alt="Food Brand Partner Logo" class="h-16 w-auto">
+                        <img src="logo.png" alt="Food Brand Partner Logo" style="width:48px; height:48px;" class="w-[48px] h-[48px] rounded-lg">
                         <span class="text-2xl font-bold text-gray-900">Food Brand Partner</span>
                     </a>
                 </div>
@@ -585,31 +625,3 @@
     </script>
 
     <!-- Cookiebot Consent Management -->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" type="text/javascript"></script>
-    
-    <!-- Callback to open Brevo chat immediately after consent -->
-    <script>
-        function CookiebotOnAccept() {
-            // Check if marketing category is accepted
-            if (Cookiebot.dialog.active) {
-                // User just accepted in the dialog
-                var consent = Cookiebot.curr_consent;
-                if (consent.marketing) {
-                    // Open Brevo chat if it exists
-                    openBrevoChat();
-                }
-            }
-        }
-        
-        function openBrevoChat() {
-            // Try to open Brevo chat widget
-            if (window.Sibbo && window.Sibbo.openChat) {
-                window.Sibbo.openChat();
-            } else if (window.brevoChat && window.brevoChat.open) {
-                window.brevoChat.open();
-            } else if (window._sib) {
-                window._sib.open_chat();
-            }
-            console.log('Cookie consent given - Brevo chat ready');
-        }
-    </script>
