@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité - Food Brand Partner</title>
 
-    <!-- 1. Cookiebot - Gestionnaire de consentement conforme RGPD -->
+    <!-- Cookiebot - Gestionnaire de consentement conforme RGPD -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" type="text/javascript" data-culture="FR"></script>
 
-    <!-- 2. Tailwind et Polices avec IGNORE pour éviter le blocage du design -->
     <script src="https://cdn.tailwindcss.com" data-cookieconsent="ignore"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" data-cookieconsent="ignore">
 
@@ -41,13 +40,12 @@
         }
     </style>
 
-    <!-- 3. LOGIQUE CHAT BREVO D'ORIGINE (ADAPTÉE COOKIEBOT) -->
+    <!-- LOGIQUE CHAT BREVO RESTAURÉE -->
     <script data-cookieconsent="ignore">
         (function() {
             const BID = '66126f5dbfa8493d584f4090';
             let loaded = false;
 
-            // Fonction de chargement identique à votre page d'accueil d'origine
             function loadBrevo() {
                 if (loaded) return;
                 (function(d, w, c) {
@@ -61,7 +59,6 @@
                     if (d.head) d.head.appendChild(s);
                 })(document, window, 'BrevoConversations');
                 loaded = true;
-                console.log("Brevo chargé.");
             }
 
             function checkConsent() {
@@ -70,11 +67,8 @@
                     if (Cookiebot.consent.marketing) {
                         if (btn) btn.style.display = 'none';
                         loadBrevo();
-                        // Si l'utilisateur a cliqué sur le faux chat, on ouvre le vrai
                         if (window.chatReq) { 
-                            setTimeout(() => { 
-                                if(window.BrevoConversations) window.BrevoConversations('openChat', true); 
-                            }, 1500); 
+                            setTimeout(() => { if(window.BrevoConversations) window.BrevoConversations('openChat', true); }, 1500); 
                             window.chatReq = false; 
                         }
                     } else {
@@ -83,7 +77,6 @@
                 }
             }
 
-            // Gestion du clic sur le faux bouton
             window.handleFakeChatClick = function() {
                 window.chatReq = true;
                 if (typeof Cookiebot !== 'undefined') Cookiebot.show();
@@ -194,7 +187,16 @@
             <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl shadow-sm border border-violet-100 p-8 mb-8">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3"><span class="w-2 h-8 bg-violet-800 rounded-full"></span>7. Vos droits</h2>
                 <p class="text-gray-600 mb-4">Conformément au RGPD, vous disposez des droits suivants : accès, rectification, effacement, opposition, portabilité et limitation.</p>
+                <div class="grid md:grid-cols-2 gap-4 mb-6 text-sm">
+                    <div class="p-3 bg-white border rounded-lg"><strong>Accès :</strong> Copie de vos données</div>
+                    <div class="p-3 bg-white border rounded-lg"><strong>Rectification :</strong> Corriger des données</div>
+                    <div class="p-3 bg-white border rounded-lg"><strong>Effacement :</strong> Supprimer vos données</div>
+                    <div class="p-3 bg-white border rounded-lg"><strong>Opposition :</strong> S'opposer au traitement</div>
+                    <div class="p-3 bg-white border rounded-lg"><strong>Portabilité :</strong> Recevoir vos données</div>
+                    <div class="p-3 bg-white border rounded-lg"><strong>Limitation :</strong> Limiter le traitement</div>
+                </div>
                 <p class="text-gray-600">Contact : <a href="mailto:contact@foodbrandpartner.com" class="text-violet-800 underline">contact@foodbrandpartner.com</a></p>
+                <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg mt-4"><p class="text-gray-700 text-sm"><strong>Réclamation :</strong> Vous avez le droit d'introduire une réclamation auprès de la CNIL.</p></div>
             </div>
 
             <!-- 8. Sécurité -->
@@ -218,6 +220,7 @@
             <!-- 11. Contact -->
             <div class="bg-gradient-to-br from-violet-800 to-violet-900 rounded-2xl shadow-lg p-8 text-white text-center">
                 <h2 class="text-2xl font-bold mb-4">11. Nous contacter</h2>
+                <p class="text-violet-200 mb-6">Pour toute question ou pour exercer vos droits, contactez-nous.</p>
                 <a href="mailto:contact@foodbrandpartner.com" class="inline-block px-6 py-3 bg-white text-violet-800 font-semibold rounded-lg hover:bg-violet-50 transition-colors">Nous contacter par email</a>
             </div>
         </div>
@@ -225,27 +228,23 @@
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 mt-12 no-print">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="mb-6">
-                    <h3 class="text-xl font-bold mb-2">Créons ensemble des marques virtuelles qui transforment votre restaurant.</h3>
-                    <p class="text-gray-300">Rejoignez les restaurateurs qui ont déjà multiplié leurs revenus avec Food Brand Partner.</p>
-                </div>
-                <div class="flex flex-wrap justify-center items-center gap-4 md:space-x-6 mb-6">
-                    <a href="index.html" class="text-gray-300 hover:text-white text-sm transition-colors">Accueil</a>
-                    <a href="cgv.html" class="text-gray-300 hover:text-white text-sm transition-colors">CGV</a>
-                    <a href="mentions-legales.html" class="text-gray-300 hover:text-white text-sm transition-colors">Mentions légales</a>
-                    <a href="politique-confidentialite.html" class="text-gray-300 hover:text-white text-sm transition-colors font-bold">Politique de confidentialité</a>
-                    <a href="cookies.html" class="text-gray-300 hover:text-white text-sm transition-colors">Politique des cookies</a>
-                </div>
-                <div class="border-t border-gray-700 pt-6">
-                    <p class="text-gray-400 text-sm">© 2025 Food Brand Partner. Tous droits réservés.</p>
-                </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold mb-2">Créons ensemble des marques virtuelles qui transforment votre restaurant.</h3>
+                <p class="text-gray-300">Rejoignez les restaurateurs qui ont déjà multiplié leurs revenus avec Food Brand Partner.</p>
             </div>
+            <div class="flex flex-wrap justify-center gap-6 mb-6 text-sm">
+                <a href="index.html" class="hover:text-violet-400">Accueil</a>
+                <a href="cgv.html" class="hover:text-violet-400">CGV</a>
+                <a href="mentions-legales.html" class="hover:text-violet-400">Mentions légales</a>
+                <a href="politique-confidentialite.html" class="font-bold">Politique de confidentialité</a>
+                <a href="cookies.html" class="hover:text-violet-400">Politique des cookies</a>
+            </div>
+            <p class="text-gray-400 text-xs">© 2025 Food Brand Partner. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <!-- FAUX BOUTON DE CHAT (Visible si cookies refusés) -->
+    <!-- FAUX BOUTON DE CHAT -->
     <div id="chat-placeholder-btn" onclick="handleFakeChatClick()" class="fixed bottom-6 right-6 w-14 h-14 bg-[#0084ff] rounded-full cursor-pointer z-40 flex items-center justify-center shadow-lg hover:bg-[#0073e6] transition-colors" style="display: none;">
         <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>
     </div>
