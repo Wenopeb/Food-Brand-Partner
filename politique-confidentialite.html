@@ -5,45 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité - Food Brand Partner</title>
 
-    <!-- 1. Cookiebot en mode AUTO (Comme sur vos autres pages) -->
+    <!-- 1. Cookiebot en mode AUTO -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" type="text/javascript"></script>
 
-    <!-- 2. TAILWIND avec l'attribut IGNORE -->
-    <!-- C'est ici que se joue la solution : on dit à Cookiebot de NE PAS analyser ce script -->
+    <!-- 2. Tailwind et ressources critiques avec 'ignore' pour ne pas bloquer le design -->
     <script src="https://cdn.tailwindcss.com" data-cookieconsent="ignore"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" data-cookieconsent="ignore">
 
     <script data-cookieconsent="ignore">
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: { violet: { 800: '#6b21a8', 900: '#581c87' } }
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        violet: {
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        }
+                    }
                 }
             }
         }
     </script>
 
     <style data-cookieconsent="ignore">
-        /* SÉCURITÉ : On s'assure que la page n'est jamais blanche même si le JS est lent */
-        html, body {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
-        }
+        /* Sécurité d'affichage */
+        body { opacity: 1 !important; visibility: visible !important; display: block !important; }
         
         .animate-fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
+            animation: fadeIn 0.5s ease-in-out forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-900">
-    <!-- Header -->
+    <!-- Header / Navigation -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
@@ -54,8 +55,8 @@
                     </a>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-violet-800 font-medium transition-colors">Accueil</a>
-                    <a href="index.html#contact" class="px-6 py-3 bg-violet-800 text-white font-semibold rounded-lg hover:bg-violet-900 transition-colors">Contactez-nous</a>
+                    <a href="index.html" class="text-gray-600 hover:text-violet-800 font-medium transition-colors duration-200">Accueil</a>
+                    <a href="index.html#contact" class="px-6 py-3 bg-violet-800 text-white font-semibold rounded-lg hover:bg-violet-900 transition-colors duration-200">Contactez-nous</a>
                 </div>
             </div>
         </nav>
@@ -65,24 +66,185 @@
     <section class="bg-gradient-to-br from-violet-800 to-violet-900 py-20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 animate-fade-in">Politique de Confidentialité</h1>
-            <p class="text-violet-200 text-lg animate-fade-in" style="animation-delay: 0.2s;">Protection de vos données personnelles</p>
+            <p class="text-violet-200 text-lg animate-fade-in" style="animation-delay: 0.2s;">Mis à jour le 24 janvier 2026 — Protection de vos données personnelles</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div class="bg-white rounded-2xl shadow-lg border border-violet-100 p-8 mb-8 relative animate-fade-in">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
-            <p class="text-gray-600 leading-relaxed">
-                Chez Food Brand Partner, nous attachons une importance particulière à la protection de vos données personnelles. 
-                Cette politique de confidentialité vous informe sur la manière dont nous collectons vos informations.
-            </p>
+        <div class="">
+            <!-- 1. Introduction -->
+            <div class="bg-white rounded-2xl shadow-lg border border-violet-100 p-8 mb-8 relative animate-fade-in">
+                <div class="absolute -top-4 left-8 w-8 h-8 bg-violet-800 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    Chez Food Brand Partner, nous attachons une importance particulière à la protection de vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site web.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Nous nous conformons strictement au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés. Nous vous encourageons à lire attentivement cette politique pour comprendre comment vos données sont traitées.
+                </p>
+            </div>
+
+            <!-- 2. Responsable de traitement -->
+            <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl shadow-sm border border-violet-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-violet-800 rounded-full"></span>
+                    2. Responsable de traitement
+                </h2>
+                <div class="p-6 bg-white rounded-xl shadow-sm border-l-4 border-violet-800">
+                    <p class="text-gray-600 leading-relaxed">
+                        <strong>Food Brand Partner</strong><br>
+                        205 Impasse du Verneguier<br>
+                        13300 Salon de Provence<br>
+                        Email : <a href="mailto:contact@foodbrandpartner.com" class="text-violet-800 hover:text-violet-600 underline">contact@foodbrandpartner.com</a>
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mt-4">
+                        En tant que responsable de traitement, nous déterminons les finalités et les moyens du traitement de vos données personnelles.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. Données collectées -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-violet-800 rounded-full"></span>
+                    3. Données collectées et finalités
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-6">
+                    Nous ne collectons que les données strictement nécessaires aux finalités déterminées suivantes :
+                </p>
+                <div class="grid gap-4">
+                    <div class="p-6 bg-violet-50 rounded-xl border border-violet-100">
+                        <h3 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-violet-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Formulaire de contact
+                        </h3>
+                        <p class="text-sm text-gray-600">
+                            <strong>Données collectées :</strong> nom, adresse email, téléphone, nom du restaurant, contenu du message<br><br>
+                            <strong>Finalité :</strong> Réponse à votre demande de contact<br><br>
+                            <strong>Base légale :</strong> Consentement explicite (case à cocher obligatoire)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Cookies -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-violet-800 rounded-full"></span>
+                    4. Cookies et technologies similaires
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    Pour en savoir plus sur les cookies que nous utilisons, leur finalité et comment les gérer, veuillez consulter notre <a href="cookies.html" class="text-violet-800 hover:text-violet-600 underline font-semibold">Politique des Cookies</a>.
+                </p>
+                <div class="bg-violet-50 border-l-4 border-violet-800 p-6 rounded-r-lg mt-4">
+                    <p class="text-gray-700">
+                        <strong class="text-violet-800">Important :</strong> Aucun cookie non essentiel n'est déposé sur votre appareil avant que vous n'acceptiez les catégories concernées.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5. Partage des données -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-violet-800 rounded-full"></span>
+                    5. Partage de vos données
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                    Vos données personnelles sont conservées de manière sécurisée et ne sont jamais vendues à des tiers. Elles peuvent être partagées avec :
+                </p>
+                <div class="grid gap-4">
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="font-semibold text-gray-900 mb-2">Cookiebot (Cybot A/S)</h3>
+                        <p class="text-sm text-gray-600"><strong>Pays :</strong> Danemark (UE) | <strong>Finalité :</strong> Consentement</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="font-semibold text-gray-900 mb-2">Brevo GmbH</h3>
+                        <p class="text-sm text-gray-600"><strong>Pays :</strong> Allemagne (UE) | <strong>Finalité :</strong> Chat & Email</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-200">
+                        <h3 class="font-semibold text-gray-900 mb-2">Google LLC</h3>
+                        <p class="text-sm text-gray-600"><strong>Pays :</strong> USA | <strong>Finalité :</strong> Analytics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Durées de conservation -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-violet-800 rounded-full"></span>
+                    6. Durées de conservation
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden shadow-sm">
+                        <thead>
+                            <tr class="bg-violet-800 text-white">
+                                <th class="p-4 text-left font-semibold">Donnée</th>
+                                <th class="p-4 text-left font-semibold">Durée</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100">
+                            <tr>
+                                <td class="p-4 text-gray-900 font-medium">Formulaire contact</td>
+                                <td class="p-4 text-gray-600">Durée de la relation client</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-gray-900 font-medium">Cookies</td>
+                                <td class="p-4 text-gray-600">12 mois</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 7. Vos droits -->
+            <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl shadow-sm border border-violet-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                    <span class="w-2 h-8 bg-violet-800 rounded-full"></span>
+                    7. Vos droits
+                </h2>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-white rounded-lg border border-gray-200"><p class="text-sm">Droit d'accès, rectification, effacement, opposition, portabilité et limitation.</p></div>
+                </div>
+                <p class="text-gray-600 mt-6">Contact : <a href="mailto:contact@foodbrandpartner.com" class="text-violet-800 underline">contact@foodbrandpartner.com</a></p>
+            </div>
+
+            <!-- 8. Sécurité -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3"><span class="w-2 h-8 bg-violet-800 rounded-full"></span>8. Sécurité</h2>
+                <p class="text-gray-600">Chiffrement SSL/TLS, accès restreint et surveillance continue.</p>
+            </div>
+
+            <!-- 9. Mineurs -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-8 animate-fade-in">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3"><span class="w-2 h-8 bg-violet-800 rounded-full"></span>9. Mineurs</h2>
+                <p class="text-gray-600">Site non destiné aux moins de 18 ans.</p>
+            </div>
+
+            <!-- 11. Contact -->
+            <div class="bg-gradient-to-br from-violet-800 to-violet-900 rounded-2xl shadow-lg p-8 text-white animate-fade-in">
+                <h2 class="text-2xl font-bold mb-4">11. Nous contacter</h2>
+                <div class="text-center">
+                    <a href="mailto:contact@foodbrandpartner.com" class="inline-block px-6 py-3 bg-white text-violet-800 font-semibold rounded-lg hover:bg-violet-50 transition-colors">Nous contacter par email</a>
+                </div>
+            </div>
         </div>
-        <!-- Note : Réintégrez ici le reste de vos sections HTML -->
     </main>
 
-    <footer class="bg-gray-800 text-white py-8 mt-12">
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 no-print">
         <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <a href="index.html" class="text-gray-300 hover:text-white text-sm">Accueil</a>
+                <a href="cgv.html" class="text-gray-300 hover:text-white text-sm">CGV</a>
+                <a href="mentions-legales.html" class="text-gray-300 hover:text-white text-sm">Mentions légales</a>
+            </div>
             <p class="text-gray-400 text-sm">© 2025 Food Brand Partner. Tous droits réservés.</p>
         </div>
     </footer>
@@ -90,8 +252,12 @@
     <script data-cookieconsent="ignore">
         function CookiebotOnAccept() {
             if (typeof Cookiebot !== 'undefined' && Cookiebot.consent && Cookiebot.consent.marketing) {
-                if (window.Sibbo && window.Sibbo.openChat) window.Sibbo.openChat();
+                openBrevoChat();
             }
+        }
+        function openBrevoChat() {
+            if (window.Sibbo && window.Sibbo.openChat) window.Sibbo.openChat();
+            else if (window.brevoChat && window.brevoChat.open) window.brevoChat.open();
         }
     </script>
 </body>
