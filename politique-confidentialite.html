@@ -1,14 +1,16 @@
-politique-confidentialite.html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité - Food Brand Partner</title>
-        <!-- Cookiebot - Gestionnaire de consentement conforme RGPD -->
-        <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" type="text/javascript"></script>
+
+    <!-- Cookiebot - Gestionnaire de consentement conforme RGPD -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ecbd4f78-0470-49a3-8181-3cef9e818479" data-blockingmode="auto" type="text/javascript"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -26,6 +28,7 @@ politique-confidentialite.html
             }
         }
     </script>
+
     <style>
         .animate-fade-in {
             animation: fadeIn 0.5s ease-in-out;
@@ -43,7 +46,8 @@ politique-confidentialite.html
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center gap-10">
-                        <img src="assets/logo.png" alt="Food Brand Partner Logo" class="h-16 w-auto">
+                        <!-- CHEMIN LOGO CORRIGÉ -->
+                        <img src="/assets/logo.png" alt="Food Brand Partner Logo" class="h-16 w-auto">
                         <span class="text-2xl font-bold text-gray-900">Food Brand Partner</span>
                     </a>
                 </div>
@@ -396,19 +400,15 @@ politique-confidentialite.html
     <!-- Callback to open Brevo chat immediately after consent -->
     <script>
         function CookiebotOnAccept() {
-            // Check if marketing category is accepted
             if (Cookiebot.dialog.active) {
-                // User just accepted in the dialog
                 var consent = Cookiebot.curr_consent;
                 if (consent.marketing) {
-                    // Open Brevo chat if it exists
                     openBrevoChat();
                 }
             }
         }
         
         function openBrevoChat() {
-            // Try to open Brevo chat widget
             if (window.Sibbo && window.Sibbo.openChat) {
                 window.Sibbo.openChat();
             } else if (window.brevoChat && window.brevoChat.open) {
@@ -419,113 +419,5 @@ politique-confidentialite.html
             console.log('Cookie consent given - Brevo chat ready');
         }
     </script>
-<style>
-#minimax-floating-ball {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 12px;
-  background: #222222;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  color: #F8F8F8;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  z-index: 9999;
-  transition: all 0.3s ease;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-#minimax-floating-ball:hover {
-  transform: translateY(-2px);
-  background: #383838;
-}
-.minimax-ball-content {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.minimax-logo-wave {
-  
-  width: 20px;
-  height: 17px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='17' viewBox='0 0 20 17' fill='none'%3E%3Cpath d='M20 12.3718L16.283 16.2413H12.2518V13.1614H9.17175V16.2413H7.00999V13.1613H3.92998V16.2413H0V4.00101L3.84145 0H20V12.3718Z' fill='white'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.minimax-ball-text {
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.minimax-close-icon {
-  margin-left: 8px;
-  font-size: 16px;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
-}
-
-.minimax-close-icon:hover {
-  opacity: 1;
-}
-</style>
-<div id="minimax-floating-ball">
-  <div class="minimax-ball-content">
-    <div class="minimax-logo-wave"></div>
-      </div>
-  <div class="minimax-close-icon">×</div>
-</div>
-<script>
-// Initialize floating ball functionality
-function initFloatingBall() {
-  const ball = document.getElementById('minimax-floating-ball');
-  if (!ball) return;
-
-  // Initial animation
-  ball.style.opacity = '0';
-  ball.style.transform = 'translateY(20px)';
-
-  setTimeout(() => {
-    ball.style.opacity = '1';
-    ball.style.transform = 'translateY(0)';
-  }, 500);
-
-  // Handle logo click
-Ajout de politique-confidentialite.html (Politique de Confidentialité)  ballContent.addEventListener('click', function (e) {
-    e.stopPropagation();
-    window.open('https://agent.minimax.io/', '_blank');
-    ball.style.transform = 'scale(0.95)';
-    setTimeout(() => {
-      ball.style.transform = 'scale(1)';
-    }, 100);
-  });
-
-  // Handle close button click
-  const closeIcon = ball.querySelector('.minimax-close-icon');
-  closeIcon.addEventListener('click', function (e) {
-    e.stopPropagation();
-    ball.style.opacity = '0';
-    ball.style.transform = 'translateY(20px)';
-
-    setTimeout(() => {
-      ball.style.display = 'none';
-    }, 300);
-  });
-}
-
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', initFloatingBall); 
-</script>
 </body>
 </html>
