@@ -1,9 +1,20 @@
 // JavaScript personnalisé Food Brand Partner
 
-// Scroll vers un élément (le scroll-margin-top CSS gère le décalage)
+// Calcule l'offset du header (bannière fixe + nav sticky)
+function getHeaderOffset() {
+    const banner = document.querySelector('div.fixed.top-0.left-0.right-0');
+    const nav = document.querySelector('nav');
+    const bannerH = banner ? banner.offsetHeight : 0;
+    const navH = nav ? nav.offsetHeight : 0;
+    return bannerH + navH + 16; // +16px marge visuelle
+}
+
+// Scroll vers un élément avec compensation du header
 function scrollToElement(element) {
     if (!element) return;
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const offset = getHeaderOffset();
+    const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
 }
 
 // Fonction pour scroller vers la section de détails/problèmes
@@ -16,8 +27,7 @@ function scrollToDetails() {
 function scrollToContact() {
     const section = document.getElementById('contact');
     if (section) {
-        const target = document.getElementById('contact-form') || section;
-        scrollToElement(target);
+        scrollToElement(section);
         setTimeout(() => {
             const firstInput = section.querySelector('input, textarea');
             if (firstInput) firstInput.focus();
@@ -30,7 +40,7 @@ function scrollToBenefits() {
     const headings = document.querySelectorAll('h2');
     for (let el of headings) {
         if (el.textContent && el.textContent.includes('Vos bénéfices clés')) {
-            scrollToElement(el);
+            scrollToElement(el.closest('section') || el);
             return;
         }
     }
