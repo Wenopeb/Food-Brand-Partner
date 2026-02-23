@@ -26,13 +26,15 @@ function scrollToDetails() {
 // Fonction pour scroller vers le formulaire de contact
 function scrollToContact() {
     const section = document.getElementById('contact');
-    if (section) {
-        const paddingTop = parseInt(window.getComputedStyle(section).paddingTop) || 0;         const offset = getHeaderOffset();         const top = section.getBoundingClientRect().top + window.pageYOffset - offset + paddingTop - 16;
-        setTimeout(() => {
-            const firstInput = section.querySelector('input, textarea');
-            if (firstInput) firstInput.focus();
-        }, 700);
-    }
+    if (!section) return;
+    // Cherche le titre h2 juste au-dessus du formulaire
+    const title = section.querySelector('h2');
+    const target = title || section;
+    scrollToElement(target);
+    setTimeout(() => {
+        const firstInput = section.querySelector('input, textarea');
+        if (firstInput) firstInput.focus();
+    }, 700);
 }
 
 // Fonction pour scroller vers la section "Vos bénéfices clés"
