@@ -1,36 +1,23 @@
 // JavaScript personnalisé Food Brand Partner
 
-// Calcule la hauteur occupée par les éléments fixes en haut
-function getHeaderOffset() {
-    let offset = 0;
-    // Banniere fixe (div.fixed en haut)
-    const banner = document.querySelector('div.fixed.top-0');
-    if (banner) offset += banner.offsetHeight;
-    // Nav sticky
-    const nav = document.querySelector('nav');
-    if (nav) offset += nav.offsetHeight;
-    return offset + 20; // +20px marge visuelle
-}
-
-// Scroll vers un élément avec compensation du header
+// Scroll vers un élément (le scroll-margin-top CSS gère le décalage)
 function scrollToElement(element) {
     if (!element) return;
-    const offset = getHeaderOffset();
-    const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // Fonction pour scroller vers la section de détails/problèmes
 function scrollToDetails() {
-    const problemsSection = document.querySelector('section h2');
-    if (problemsSection) scrollToElement(problemsSection);
+    const el = document.querySelector('section h2');
+    if (el) scrollToElement(el);
 }
 
 // Fonction pour scroller vers le formulaire de contact
 function scrollToContact() {
     const section = document.getElementById('contact');
     if (section) {
-        scrollToElement(section.querySelector('h2') || section);
+        const target = section.querySelector('h2') || section;
+        scrollToElement(target);
         setTimeout(() => {
             const firstInput = section.querySelector('input, textarea');
             if (firstInput) firstInput.focus();
@@ -40,11 +27,10 @@ function scrollToContact() {
 
 // Fonction pour scroller vers la section "Vos bénéfices clés"
 function scrollToBenefits() {
-    const headings = document.querySelectorAll('h1, h2, h3');
+    const headings = document.querySelectorAll('h2');
     for (let el of headings) {
         if (el.textContent && el.textContent.includes('Vos bénéfices clés')) {
-            const section = el.closest('section') || el;
-            scrollToElement(section.querySelector('h2') || section);
+            scrollToElement(el);
             return;
         }
     }
