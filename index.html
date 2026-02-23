@@ -1024,19 +1024,17 @@
             if (el) scrollToElement(el);
         }
 
-        // Fonction pour scroller vers le formulaire de contact
+                // Fonction pour scroller vers le formulaire de contact
         function scrollToContact() {
             var section = document.getElementById('contact');
             if (!section) return;
-            var title = section.querySelector('h2');
-            var target = title || section;
-            scrollToElement(target);
+                        section.style.scrollMarginTop = '120px';
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             setTimeout(function() {
                 var firstInput = section.querySelector('input, textarea');
                 if (firstInput) firstInput.focus();
             }, 700);
         }
-
         // Fonction pour scroller vers la section "Vos bénéfices clés"
         function scrollToBenefits() {
             var headings = document.querySelectorAll('h2');
