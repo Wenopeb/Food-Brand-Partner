@@ -27,7 +27,7 @@ function scrollToDetails() {
 function scrollToContact() {
     const section = document.getElementById('contact');
     if (section) {
-        scrollToElement(section);
+        const paddingTop = parseInt(window.getComputedStyle(section).paddingTop) || 0;         const offset = getHeaderOffset();         const top = section.getBoundingClientRect().top + window.pageYOffset - offset + paddingTop - 16;
         setTimeout(() => {
             const firstInput = section.querySelector('input, textarea');
             if (firstInput) firstInput.focus();
