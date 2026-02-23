@@ -30,7 +30,7 @@ function scrollToDetails() {
 function scrollToContact() {
     const section = document.getElementById('contact');
     if (section) {
-        scrollToElement(section);
+        scrollToElement(section.querySelector('h2') || section);
         setTimeout(() => {
             const firstInput = section.querySelector('input, textarea');
             if (firstInput) firstInput.focus();
@@ -44,7 +44,7 @@ function scrollToBenefits() {
     for (let el of headings) {
         if (el.textContent && el.textContent.includes('Vos bénéfices clés')) {
             const section = el.closest('section') || el;
-            scrollToElement(section);
+            scrollToElement(section.querySelector('h2') || section);
             return;
         }
     }
