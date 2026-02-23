@@ -16,7 +16,7 @@ function scrollToDetails() {
 function scrollToContact() {
     const section = document.getElementById('contact');
     if (section) {
-        const target = section.querySelector('h2') || section;
+        const target = document.getElementById('contact-form') || section;
         scrollToElement(target);
         setTimeout(() => {
             const firstInput = section.querySelector('input, textarea');
