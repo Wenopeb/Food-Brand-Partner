@@ -1,60 +1,40 @@
 // JavaScript personnalisé Food Brand Partner
 
-// Calcule l'offset du header (bannière fixe + nav sticky)
-function getHeaderOffset() {
-    const banner = document.querySelector('div.fixed.top-0.left-0.right-0');
-    const nav = document.querySelector('nav');
-    const bannerH = banner ? banner.offsetHeight : 0;
-    const navH = nav ? nav.offsetHeight : 0;
-    return bannerH + navH + 16; // +16px marge visuelle
-}
-
-// Scroll vers un élément avec compensation du header
-function scrollToElement(element) {
-    if (!element) return;
-    const offset = getHeaderOffset();
-    const top = element.getBoundingClientRect().top + window.pageYOffset - offset;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-}
-
-// Fonction pour scroller vers la section de détails/problèmes
-function scrollToDetails() {
-    const el = document.querySelector('section h2');
-    if (el) scrollToElement(el);
-}
-
-// Fonction pour scroller vers le formulaire de contact
 function scrollToContact() {
     const section = document.getElementById('contact');
     if (!section) return;
-    // Cherche le titre h2 juste au-dessus du formulaire
-    const title = section.querySelector('h2');
-    const target = title || section;
-    scrollToElement(target);
+    const y = section.getBoundingClientRect().top + window.pageYOffset - 160;
+    window.scrollTo({ top: y, behavior: 'smooth' });
     setTimeout(() => {
-        const firstInput = section.querySelector('input, textarea');
-        if (firstInput) firstInput.focus();
+        const input = section.querySelector('input');
+        if (input) input.focus();
     }, 700);
 }
 
-// Fonction pour scroller vers la section "Vos bénéfices clés"
 function scrollToBenefits() {
     const headings = document.querySelectorAll('h2');
-    for (let el of headings) {
-        if (el.textContent && el.textContent.includes('Vos bénéfices clés')) {
-            scrollToElement(el.closest('section') || el);
+    for (let h of headings) {
+        if (h.textContent.trim().includes('Vénéfices clés') || h.textContent.trim().includes('os bénéfices')) {
+            const section = h.closest('section') || h;
+            const y = section.getBoundingClientRect().top + window.pageYOffset - 160;
+            window.scrollTo({ top: y, behavior: 'smooth' });
             return;
         }
     }
 }
 
-// Fonction pour toggle le menu mobile
+function scrollToDetails() {
+    const el = document.querySelector('section:nth-of-type(2)');
+    if (!el) return;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 160;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenu.classList.toggle('hidden');
 }
 
-// Fonction pour toggle les FAQ
 function toggleFaq(index) {
     const answer = document.getElementById(`faq-answer-${index}`);
     const icon = document.getElementById(`faq-icon-${index}`);
@@ -67,66 +47,53 @@ function toggleFaq(index) {
     }
 }
 
-// Smooth scrolling pour les liens d'ancrage (ex: #faq)
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) scrollToElement(target);
+            if (!target) return;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - 160;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         });
     });
 });
 
-// Animation au scroll
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.card-hover');
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < window.innerHeight - 150) {
-            element.classList.add('animate-fade-in-up');
+    document.querySelectorAll('.card-hover').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 150) {
+            el.classList.add('animate-fade-in-up');
         }
     });
 }
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
-// Gestion du formulaire de contact
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
             e.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            console.log('Données du formulaire:', data);
+            const data = Object.fromEntries(new FormData(this));
+            console.log('Données:', data);
             alert('Merci pour votre demande ! Nous vous contacterons très rapidement.');
             this.reset();
         });
     }
 });
 
-// Fermer le menu mobile quand on clique sur un lien
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a, #mobile-menu button');
-    mobileMenuLinks.forEach(link => {
+    document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(link => {
         link.addEventListener('click', () => {
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
+            const m = document.getElementById('mobile-menu');
+            if (!m.classList.contains('hidden')) m.classList.add('hidden');
         });
     });
 });
 
-// Lazy loading animation au scroll
 document.addEventListener('DOMContentLoaded', function() {
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-fade-in-up');
-            }
-        });
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate-fade-in-up'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     document.querySelectorAll('.card-hover').forEach(card => observer.observe(card));
 });
