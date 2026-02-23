@@ -1,21 +1,15 @@
 // JavaScript personnalisé Food Brand Partner
 
-// Calcule dynamiquement la hauteur totale des éléments fixés en haut de page
+// Calcule la hauteur occupée par les éléments fixes en haut
 function getHeaderOffset() {
-    let totalHeight = 0;
-    const allElements = document.querySelectorAll('*');
-    allElements.forEach(el => {
-        const style = window.getComputedStyle(el);
-        const position = style.position;
-        if (position === 'fixed' || position === 'sticky') {
-            const rect = el.getBoundingClientRect();
-            // Uniquement les éléments en haut de page (top < 10px)
-            if (rect.top <= 10 && rect.height > 0 && rect.width > 100) {
-                totalHeight = Math.max(totalHeight, rect.bottom);
-            }
-        }
-    });
-    return totalHeight + 16; // +16px de marge visuelle
+    let offset = 0;
+    // Banniere fixe (div.fixed en haut)
+    const banner = document.querySelector('div.fixed.top-0');
+    if (banner) offset += banner.offsetHeight;
+    // Nav sticky
+    const nav = document.querySelector('nav');
+    if (nav) offset += nav.offsetHeight;
+    return offset + 20; // +20px marge visuelle
 }
 
 // Scroll vers un élément avec compensation du header
@@ -29,9 +23,7 @@ function scrollToElement(element) {
 // Fonction pour scroller vers la section de détails/problèmes
 function scrollToDetails() {
     const problemsSection = document.querySelector('section h2');
-    if (problemsSection) {
-        scrollToElement(problemsSection);
-    }
+    if (problemsSection) scrollToElement(problemsSection);
 }
 
 // Fonction pour scroller vers le formulaire de contact
