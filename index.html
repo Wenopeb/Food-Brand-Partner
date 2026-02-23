@@ -997,17 +997,17 @@
     </div>
 
     <!-- Scripts -->
-    <script src="app.js?v=2"></script>
+    
     <script>
         // JavaScript personnalisé Food Brand Partner
 
-        // Calcule l'offset du header (bannière fixe + nav sticky)
+                <!-- app.js integre inline ci-dessous -->
         function getHeaderOffset() {
             var banner = document.querySelector('div.fixed.top-0.left-0.right-0');
             var nav = document.querySelector('nav');
             var bannerH = banner ? banner.offsetHeight : 0;
             var navH = nav ? nav.offsetHeight : 0;
-            return bannerH + navH + 16;
+            return 160;
         }
 
         // Scroll vers un élément avec compensation du header
